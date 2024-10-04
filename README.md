@@ -106,4 +106,3 @@ mvn clean test
 
 - Entregar o projeto em container será um diferencial.
 - Fica a critério do desenvolvedor inserir ou remover dependencias do projeto para garantir o objetivo do challenge.
-- Utilize o [ICA@IBM](https://servicesessentials.ibm.com/launchpad) para apoiar nas atividades.

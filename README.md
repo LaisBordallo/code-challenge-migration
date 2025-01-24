@@ -14,7 +14,7 @@ O desafio consiste em migrar este projeto para Java 17 e Spring Boot 3.2.5. Dura
 - **Consulta de Produtos**: Realiza chamadas para a API do DummyJSON para buscar informações sobre produtos.
 - **Integração com `RestTemplate`**: Utiliza `RestTemplate` para realizar chamadas HTTP.
 - **Validação de Dados**: Validação de dados de entrada usando Bean Validation (`javax.validation`).
-- **Gestão de Dependências**: Configurado para utilizar @Autoweird.
+- **Gestão de Dependências**: Configurado para utilizar @Autowired.
 - **Testes Unitários**: Inclui testes unitários desenvolvidos com JUnit 4 e Mockito.
 
 ## Estrutura do Projeto

@@ -63,7 +63,7 @@ dummyjson-client
 1. Clone o repositório:
 
     ```bash
-    git clone https://github.ibm.com/Wendell-Santos/code-challenge-migration.git
+    git clone https://github.com/WendellTufano/code-challenge-migration.git
     cd dummyjson-client
     ```
 

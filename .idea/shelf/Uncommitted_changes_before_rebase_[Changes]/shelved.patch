@@ -1,0 +1,57 @@
+Index: src/test/java/com/example/dummyjson/service/ProductServiceTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.dummyjson.service;\r\n\r\nimport com.example.dummyjson.dto.Product;\r\nimport org.junit.jupiter.api.BeforeEach;\r\nimport org.junit.jupiter.api.Test;\r\nimport org.junit.jupiter.api.extension.ExtendWith;\r\nimport org.mockito.junit.jupiter.MockitoExtension;\r\nimport org.springframework.beans.factory.annotation.Autowired;\r\nimport org.springframework.boot.test.context.SpringBootTest;\r\nimport org.springframework.boot.test.mock.mockito.MockBean;\r\nimport reactor.core.publisher.Mono;\r\nimport reactor.test.StepVerifier;\r\nimport static org.mockito.Mockito.*;\r\n\r\nimport org.springframework.web.reactive.function.client.WebClient;\r\n\r\nimport java.util.Collections;\r\nimport java.util.List;\r\n\r\n@SpringBootTest\r\n@ExtendWith(MockitoExtension.class) // Adiciona o MockitoExtension\r\npublic class ProductServiceTest {\r\n\r\n    @MockBean\r\n    private WebClient.Builder webClientBuilder;\r\n\r\n    @Autowired\r\n    private ProductService productService;\r\n\r\n    private WebClient webClient;\r\n\r\n    @BeforeEach\r\n    public void setup() {\r\n        webClient = mock(WebClient.class);\r\n        WebClient.RequestHeadersUriSpec requestHeadersUriSpec = mock(WebClient.RequestHeadersUriSpec.class);\r\n        WebClient.RequestHeadersSpec requestHeadersSpec = mock(WebClient.RequestHeadersSpec.class);\r\n        WebClient.ResponseSpec responseSpec = mock(WebClient.ResponseSpec.class);\r\n\r\n        when(webClientBuilder.baseUrl(anyString())).thenReturn(webClientBuilder);\r\n        when(webClientBuilder.build()).thenReturn(webClient);\r\n        when(webClient.get()).thenReturn(requestHeadersUriSpec);\r\n        when(requestHeadersUriSpec.uri(anyString())).thenReturn(requestHeadersSpec);\r\n        when(requestHeadersSpec.retrieve()).thenReturn(responseSpec);\r\n        when(responseSpec.bodyToMono(Product.class)).thenReturn(Mono.just(new Product(1L, \"Product 1\", \"Description 1\", 10.0)));\r\n        when(responseSpec.bodyToFlux(Product.class)).thenReturn(Mono.just(Collections.singletonList(new Product(1L, \"Product 1\", \"Description 1\", 10.0))).flux());\r\n    }\r\n\r\n    @Test\r\n    public void testGetProductById() {\r\n        Product mockProduct = new Product(1L, \"Product 1\", \"Description 1\", 10.0);\r\n\r\n        StepVerifier.create(productService.getProductById(1L))\r\n                .expectNext(mockProduct)\r\n                .verifyComplete();\r\n    }\r\n\r\n    @Test\r\n    public void testGetAllProducts() {\r\n        List<Product> mockProducts = Collections.singletonList(new Product(1L, \"Product 1\", \"Description 1\", 10.0));\r\n\r\n        StepVerifier.create(productService.getAllProducts())\r\n                .expectNext(mockProducts)\r\n                .verifyComplete();\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/test/java/com/example/dummyjson/service/ProductServiceTest.java b/src/test/java/com/example/dummyjson/service/ProductServiceTest.java
+--- a/src/test/java/com/example/dummyjson/service/ProductServiceTest.java	(revision 7f5af4b97ee0b2f2528f885979f427c6aa1add46)
++++ b/src/test/java/com/example/dummyjson/service/ProductServiceTest.java	(date 1740190431888)
+@@ -4,28 +4,28 @@
+ import org.junit.jupiter.api.BeforeEach;
+ import org.junit.jupiter.api.Test;
+ import org.junit.jupiter.api.extension.ExtendWith;
++import org.mockito.InjectMocks;
++import org.mockito.Mock;
+ import org.mockito.junit.jupiter.MockitoExtension;
+-import org.springframework.beans.factory.annotation.Autowired;
+-import org.springframework.boot.test.context.SpringBootTest;
+-import org.springframework.boot.test.mock.mockito.MockBean;
++import reactor.core.publisher.Flux;
+ import reactor.core.publisher.Mono;
+ import reactor.test.StepVerifier;
+-import static org.mockito.Mockito.*;
+ 
+ import org.springframework.web.reactive.function.client.WebClient;
+ 
+ import java.util.Collections;
+ import java.util.List;
+ 
+-@SpringBootTest
+-@ExtendWith(MockitoExtension.class) // Adiciona o MockitoExtension
++import static org.mockito.Mockito.*;
++
++@ExtendWith(MockitoExtension.class) // Usando MockitoExtension
+ public class ProductServiceTest {
+ 
+-    @MockBean
++    @Mock
+     private WebClient.Builder webClientBuilder;
+ 
+-    @Autowired
+-    private ProductService productService;
++    @InjectMocks
++    private ProductService productService; // Injetando mocks no ProductService
+ 
+     private WebClient webClient;
+ 
+@@ -42,7 +42,7 @@
+         when(requestHeadersUriSpec.uri(anyString())).thenReturn(requestHeadersSpec);
+         when(requestHeadersSpec.retrieve()).thenReturn(responseSpec);
+         when(responseSpec.bodyToMono(Product.class)).thenReturn(Mono.just(new Product(1L, "Product 1", "Description 1", 10.0)));
+-        when(responseSpec.bodyToFlux(Product.class)).thenReturn(Mono.just(Collections.singletonList(new Product(1L, "Product 1", "Description 1", 10.0))).flux());
++        when(responseSpec.bodyToFlux(Product.class)).thenReturn(Flux.just(new Product(1L, "Product 1", "Description 1", 10.0)));
+     }
+ 
+     @Test

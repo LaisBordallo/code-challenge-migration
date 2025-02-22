@@ -1,0 +1,18 @@
+-------------------------------------------------------------------------------
+Test set: com.example.dummyjson.controller.ProductControllerTest
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 4.825 s <<< FAILURE! -- in com.example.dummyjson.controller.ProductControllerTest
+com.example.dummyjson.controller.ProductControllerTest.testGetProductById -- Time elapsed: 1.251 s <<< ERROR!
+org.mockito.exceptions.misusing.NotAMockException: Argument should be a mock, but is: class com.example.dummyjson.service.ProductService
+	at com.example.dummyjson.controller.ProductControllerTest.setUp(ProductControllerTest.java:29)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
+com.example.dummyjson.controller.ProductControllerTest.testGetAllProducts -- Time elapsed: 0.006 s <<< ERROR!
+org.mockito.exceptions.misusing.NotAMockException: Argument should be a mock, but is: class com.example.dummyjson.service.ProductService
+	at com.example.dummyjson.controller.ProductControllerTest.setUp(ProductControllerTest.java:29)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+

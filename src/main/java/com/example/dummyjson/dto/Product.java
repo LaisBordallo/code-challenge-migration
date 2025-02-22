@@ -2,10 +2,12 @@ package com.example.dummyjson.dto;
 
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
+@Getter
 public class Product {
 
     @NotNull
